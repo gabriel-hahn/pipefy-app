@@ -1,6 +1,8 @@
 # Pipefy Application
 
-A React project to recreate Pipefy website and some features.
+A React project to recreate Pipefy website and some features. It was developed during Rocketseat tutorial, using Drag and Drop and few more features to create a basic Pipefy clone.
+
+This project is available on "link";
 
 ## Contributing
 
