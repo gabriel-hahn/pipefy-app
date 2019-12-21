@@ -9,12 +9,12 @@ const TYPE = {
   CARD: 'CARD'
 };
 
-export default function Card({ data, index }) {
+export default function Card({ data, index, listIndex }) {
   const ref = useRef();
   const { move } = useContext(BoardContext);
 
   const [{ isDragging }, dragRef] = useDrag({
-    item: { type: TYPE.CARD, index },
+    item: { type: TYPE.CARD, index, listIndex },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     })
@@ -23,6 +23,8 @@ export default function Card({ data, index }) {
   const [, dropRef] = useDrop({
     accept: TYPE.CARD,
     hover(item, monitor) {
+      const draggedListIndex = item.listIndex;
+
       const draggedIndex = item.index;
       const targetIndex = index;
 
@@ -44,7 +46,7 @@ export default function Card({ data, index }) {
         return;
       }
 
-      move(draggedIndex, targetIndex);
+      move(draggedListIndex, draggedIndex, targetIndex);
     }
   });
 
